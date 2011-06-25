@@ -262,7 +262,7 @@ class api(object):
 
     def user_lookup(self, user_id = [], screen_name = [], **params):
         params["user_id"] = ",".join(user_id)
-        params["screen_name"] = ",".join(user_id)
+        params["screen_name"] = ",".join(screen_name)
         return self._api("users", "lookup", params)
     
     def user_search(self, q, **params):
