@@ -103,7 +103,7 @@ url = {
         },
     "lists" : {
         "create" :
-            apiurl + "${user}/lists" + t,
+            apiurl + "lists/create" + t,
         "update" :
             apiurl + "${user}/lists/${id}" + t,
         "index" :
@@ -118,6 +118,10 @@ url = {
             apiurl + "${user}/lists/memberships" + t,
         "subscriptions" :
             apiurl + "${user}/lists/subscriptions" + t,
+        "members" :
+            apiurl + "lists/members" + t,
+        "mcreate_all" :
+            apiurl + "lists/members/create_all" + t,
         "mlist" :
             apiurl + "${user}/${list_id}/members" + t,
         "madd" :
@@ -234,6 +238,8 @@ method = {
         "statuses"      : "GET",
         "memberships"   : "GET",
         "subscriptions" : "GET",
+        "members"       : "GET",
+        "mcreate_all"   : "POST",
         "mlist"         : "GET",
         "madd"          : "POST",
         "mremove"       : "DELETE",

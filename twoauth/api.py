@@ -320,6 +320,21 @@ class api(object):
     #
     # Lists Members Methods
     #
+    def lists_members(self, list_id, user = "", is_screen_name = False, **params):
+        params[self._idtype(list_id, ret = ("list_id", "slug"))] = list_id
+        params[self._idtype(user, ret = ("owner_id", "owner_screen_name"), 
+            is_screen_name = is_screen_name)] = user
+        return self._api("lists", "members", params)
+
+    def lists_mcreate_all(self, list_id, user = "", is_screen_name = False, user_id = [], screen_name = [], **params):
+        params[self._idtype(list_id, ret = ("list_id", "slug"))] = list_id
+        params[self._idtype(user, ret = ("owner_id", "owner_screen_name"), 
+            is_screen_name = is_screen_name)] = user
+        if len(user_id) > 0 : params['user_id'] = ','.join(user_id)
+        else : params['screen_name'] = ','.join(screen_name)
+
+        return self._api("lists", "mcreate_all", params)
+
     def lists_mlist(self, list_id, user = "", **params):
         return self._api("lists", "mlist", params, 
                          user = user, list_id = list_id)
